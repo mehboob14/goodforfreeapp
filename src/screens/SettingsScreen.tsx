@@ -18,10 +18,29 @@ import {
   getExpoPushToken,
   checkForNewArticlesAndNotify,
 } from '../notifications/notifications';
+import {
+  gffNativeAvailable,
+  pinWidget,
+  isPinSupported,
+  openHomeSettings,
+} from '../native/gffnative';
 
 export default function SettingsScreen() {
   const { settings, theme, update, reset } = useSettings();
   const [pushToken, setPushToken] = useState<string | null>(null);
+
+  // Triggers the system "add widget to home screen" prompt, or explains why it
+  // can't (some launchers don't support pinning).
+  const pinOrWarn = (name: 'Clock' | 'Featured' | 'ClockFeatured') => {
+    if (!isPinSupported()) {
+      Alert.alert(
+        'Not supported',
+        'Your launcher doesn’t support adding widgets from inside the app. Long-press the home screen → Widgets → GoodForFree to add it manually.'
+      );
+      return;
+    }
+    pinWidget(name);
+  };
 
   useEffect(() => {
     if (settings.notificationsEnabled) {
@@ -178,6 +197,32 @@ export default function SettingsScreen() {
             </>
           )}
         </Section>
+
+        {/* ---- Home screen (Android widgets + launcher) ---- */}
+        {gffNativeAvailable && (
+          <Section title="Home screen" theme={theme}>
+            <ActionRow
+              label="Add Clock widget to home screen"
+              onPress={() => pinOrWarn('Clock')}
+              theme={theme}
+            />
+            <ActionRow
+              label="Add Article widget to home screen"
+              onPress={() => pinOrWarn('Featured')}
+              theme={theme}
+            />
+            <ActionRow
+              label="Add Clock + Article widget to home screen"
+              onPress={() => pinOrWarn('ClockFeatured')}
+              theme={theme}
+            />
+            <ActionRow
+              label="Set GoodForFree as default home app"
+              onPress={openHomeSettings}
+              theme={theme}
+            />
+          </Section>
+        )}
 
         <Pressable
           onPress={() =>

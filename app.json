@@ -48,6 +48,7 @@
       ],
       "expo-font",
       "expo-asset",
+      "./plugins/withHomeLauncher",
       [
         "react-native-android-widget",
         {

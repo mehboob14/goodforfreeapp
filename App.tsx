@@ -17,6 +17,7 @@ import { SettingsProvider, useSettings } from './src/context/SettingsContext';
 import { checkForNewArticlesAndNotify } from './src/notifications/notifications';
 import ClockScreen from './src/screens/ClockScreen';
 import WorldClockScreen from './src/screens/WorldClockScreen';
+import LauncherScreen from './src/screens/LauncherScreen';
 import ArticlesScreen from './src/screens/ArticlesScreen';
 import ArticleDetailScreen from './src/screens/ArticleDetailScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
@@ -83,6 +84,7 @@ function Tabs() {
           const icons: Record<keyof RootTabParamList, keyof typeof Ionicons.glyphMap> = {
             Clock: 'time-outline',
             World: 'earth-outline',
+            Launcher: 'grid-outline',
             Articles: 'newspaper-outline',
             Settings: 'settings-outline',
           };
@@ -92,6 +94,7 @@ function Tabs() {
     >
       <Tab.Screen name="Clock" component={ClockScreen} />
       <Tab.Screen name="World" component={WorldClockScreen} options={{ title: 'World' }} />
+      <Tab.Screen name="Launcher" component={LauncherScreen} options={{ title: 'Home' }} />
       <Tab.Screen name="Articles" component={ArticlesNavigator} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>

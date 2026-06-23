@@ -8,6 +8,7 @@ export type ArticlesStackParamList = {
 export type RootTabParamList = {
   Clock: undefined;
   World: undefined;
+  Launcher: undefined;
   Articles: undefined;
   Settings: undefined;
 };
