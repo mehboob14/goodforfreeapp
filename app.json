@@ -1,0 +1,101 @@
+{
+  "expo": {
+    "name": "GoodForFree",
+    "slug": "goodforfree",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "scheme": "goodforfree",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0B0B12"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.goodforfree.app",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "fetch",
+          "remote-notification"
+        ]
+      }
+    },
+    "android": {
+      "package": "com.goodforfree.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0B0B12"
+      },
+      "permissions": [
+        "RECEIVE_BOOT_COMPLETED",
+        "VIBRATE",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#7C5CFF"
+        }
+      ],
+      "expo-font",
+      "expo-asset",
+      [
+        "react-native-android-widget",
+        {
+          "widgets": [
+            {
+              "name": "Clock",
+              "label": "GoodForFree Clock",
+              "description": "A clean digital clock",
+              "minWidth": "110dp",
+              "minHeight": "110dp",
+              "targetCellWidth": 2,
+              "targetCellHeight": 2,
+              "previewImage": "./assets/widget-preview/clock.png",
+              "resizeMode": "horizontal|vertical",
+              "updatePeriodMillis": 1800000
+            },
+            {
+              "name": "Featured",
+              "label": "GoodForFree Article",
+              "description": "Latest article from GoodForFree",
+              "minWidth": "250dp",
+              "minHeight": "110dp",
+              "targetCellWidth": 4,
+              "targetCellHeight": 2,
+              "previewImage": "./assets/widget-preview/featured.png",
+              "resizeMode": "horizontal|vertical",
+              "updatePeriodMillis": 1800000
+            },
+            {
+              "name": "ClockFeatured",
+              "label": "GoodForFree Clock + Article",
+              "description": "Clock with the latest article",
+              "minWidth": "250dp",
+              "minHeight": "180dp",
+              "targetCellWidth": 4,
+              "targetCellHeight": 3,
+              "previewImage": "./assets/widget-preview/clockfeatured.png",
+              "resizeMode": "horizontal|vertical",
+              "updatePeriodMillis": 1800000
+            }
+          ]
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "REPLACE_WITH_YOUR_EAS_PROJECT_ID"
+      }
+    }
+  }
+}
