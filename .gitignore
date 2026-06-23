@@ -31,3 +31,7 @@ yarn-error.*
 .idea/
 .vscode/
 *.tsbuildinfo
+
+# temp QR codes
+qr*.svg
+qr*.png
