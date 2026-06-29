@@ -48,6 +48,7 @@
       ],
       "expo-font",
       "expo-asset",
+      "@bacons/apple-targets",
       "./plugins/withHomeLauncher",
       [
         "react-native-android-widget",
